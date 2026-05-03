@@ -1,0 +1,45 @@
+# Himalaya CLI Configuration
+# Multi-account email client for terminal-based automation
+
+[accounts.icloud]
+email = "user@icloud.com"
+display-name = "Frederick Van Wagenen"
+default = true
+
+# IMAP (read)
+backend.type = "imap"
+backend.host = "imap.mail.me.com"
+backend.port = 993
+backend.encryption.type = "tls"
+backend.login = "user@icloud.com"
+backend.auth.type = "password"
+backend.auth.cmd = "cat /home/apache/.himalaya-icloud-pass"
+
+# SMTP (send)
+message.send.backend.type = "smtp"
+message.send.backend.host = "smtp.mail.me.com"
+message.send.backend.port = 587
+message.send.backend.encryption.type = "start-tls"
+message.send.backend.login = "user@icloud.com"
+message.send.backend.auth.type = "password"
+message.send.backend.auth.cmd = "cat /home/apache/.himalaya-icloud-pass"
+
+[accounts.gmail]
+email = "user@gmail.com"
+display-name = "Frederick Van Wagenen"
+
+backend.type = "imap"
+backend.host = "imap.gmail.com"
+backend.port = 993
+backend.encryption.type = "tls"
+backend.login = "user@gmail.com"
+backend.auth.type = "password"
+backend.auth.cmd = "pass show email/gmail"
+
+message.send.backend.type = "smtp"
+message.send.backend.host = "smtp.gmail.com"
+message.send.backend.port = 587
+message.send.backend.encryption.type = "start-tls"
+message.send.backend.login = "user@gmail.com"
+message.send.backend.auth.type = "password"
+message.send.backend.auth.cmd = "pass show email/gmail"
