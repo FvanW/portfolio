@@ -44,6 +44,23 @@ A multi-model, multi-tool AI agent system running 24/7 on a self-hosted Ubuntu s
 
 ---
 
+### [Plaid Transaction Sync Engine](projects/plaid-sync/)
+
+A local-first financial data pipeline that syncs bank transactions via Plaid API into an encrypted SQLite database. Handles idempotent delta syncs, soft-deleted audit trails, and automatic retry with exponential backoff.
+
+**Key achievements:**
+- **620+ transactions** synced in initial run across 6 accounts (checking, savings, credit, loan)
+- **Idempotent verified:** Second sync added 0 duplicates — cursor-based delta tracking works
+- **Atomic sync wrapping:** SQLite transaction ensures DB state and cursor advance together (no partial commits)
+- **Soft-delete audit trail:** Removed transactions marked, not deleted — preserves reconciliation history
+- **Encrypted at rest:** Plaid access tokens encrypted with Fernet, key isolated in `.env`
+- **Sub-15-second sync time** for full delta across all accounts
+- **Zero operational cost:** Plaid production API within free tier for personal use
+
+**Tech stack:** Python 3.11, Plaid Python SDK, SQLite (WAL mode), cryptography (Fernet), tenacity, pydantic-settings
+
+---
+
 ### [Home Infrastructure Stack](projects/infrastructure/)
 
 A production-grade home server environment supporting development, automation, and media workflows.
@@ -65,6 +82,8 @@ A production-grade home server environment supporting development, automation, a
 |--------|----------|-------------|
 | [model_router.py](code-samples/model_router.py) | Python | Multi-provider LLM fallback router with cost tracking |
 | [email_triage.py](code-samples/email_triage.py) | Python | IMAP-based email classification and action queue |
+| [sync_engine.py](code-samples/sync_engine.py) | Python | Atomic transaction sync with cursor management and soft-delete |
+| [plaid_schema.sql](code-samples/plaid_schema.sql) | SQL | SQLite schema with WAL mode, foreign keys, audit trail |
 | [threshold_alert.py](code-samples/threshold_alert.py) | Python | State-transition alerting to prevent notification fatigue |
 | [git_sync.sh](code-samples/git_sync.sh) | Bash | Auto-resolve git sync with pull-before-push and retry logic |
 | [himalaya.toml](code-samples/himalaya.toml) | TOML | Multi-account email CLI configuration (iCloud + Gmail) |
@@ -99,18 +118,21 @@ A production-grade home server environment supporting development, automation, a
 
 - **Systems uptime:** 99%+ (self-hosted, self-monitored)
 - **Automated tasks/day:** 100+ (email, finance, research, backup)
+- **Financial records synced:** 620+ transactions, 6 accounts, 3+ months history
 - **API cost efficiency:** $8–10/month for full automation stack
-- **Lines of code written:** 3,000+ (Python, Bash, configs)
-- **Repositories managed:** 3 (vault backup, portfolio, private configs)
+- **Lines of code written:** 3,500+ (Python, Bash, SQL, configs)
+- **Repositories managed:** 4 (vault backup, portfolio, plaid-sync, private configs)
 
 ---
 
 ## Currently Building
 
+- ✅ **Automated financial intelligence layer** — Plaid sync engine live, 620+ transactions tracked
 - 🔧 Multi-inbox email triage (Gmail + iCloud via Himalaya CLI)
 - 🔧 Local LLM integration (Ollama) for zero-cost inference tier
 - 🔧 Claude Code + local model hybrid for software development
-- 🔧 Automated financial intelligence layer (debt tracking, investment monitoring, ETS 2030 goal dashboard)
+- 🔧 FastAPI dashboard for transaction browsing and custom financial reports
+- 🔧 Spending anomaly detection with Telegram alerts
 
 ---
 
