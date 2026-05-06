@@ -83,15 +83,23 @@ A production-grade home server environment supporting development, automation, a
 
 ## Certifications & Education
 
-| Certification | Status | Date |
-|---------------|--------|------|
+| Certification | Status | Target |
+|---------------|--------|--------|
 | AWS Cloud Technical Essentials | Completed | 2025 |
-| CompTIA Security+ | In Progress | Est. 2026 |
-| CompTIA CySA+ | Planned | Phase 2 |
-| Red Hat Certified System Administrator (RHCSA) | Planned | Phase 2 |
-| Certified Kubernetes Administrator (CKA) | Planned | Phase 3 |
+| NDG Linux Essentials | In Progress | 2026 |
+| LPI Linux Essentials | Planned | Late 2026 |
+| CompTIA Linux+ | Planned | Mid 2027 |
+| Red Hat Certified System Administrator (RHCSA) | Planned | Early 2028 |
+| Docker & Kubernetes | Planned | Mid 2028 |
+| AWS Solutions Architect Associate | Planned | 2028 |
+| Terraform | Planned | 2028–2029 |
+| Certified Kubernetes Administrator (CKA) | Planned | 2029 |
+| CompTIA Security+ | Planned | 2029 |
 
-**Education:** Harvard CS50P (Python), Harvard CS50x (Computer Science) — In Progress
+**Education:** Harvard CS50P (Python) — In Progress  
+**Scholarship:** Verizon Skill Forward / edX
+
+*Removed from roadmap: CySA+, CS50x (not aligned with confirmed direction).*
 
 ---
 
